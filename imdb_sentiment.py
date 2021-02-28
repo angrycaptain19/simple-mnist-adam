@@ -10,7 +10,7 @@ BATCH_SIZE = 500
 
 def load_data():
     (train_data, train_labels), (test_data, test_labels) = datasets.imdb.load_data(num_words=NUM_WORDS)
-    train_data = preprocessing.sequence.pad_sequences(train_data, maxlen=MAX_LEN)
+    train_data = preprocessing.sequence.pad_sequences(train_data, maxlen=MAX_LEN) #normalize data size for processing
     test_data = preprocessing.sequence.pad_sequences(test_data, maxlen=MAX_LEN)
 
     return (train_data, train_labels), (test_data, test_labels)
@@ -44,8 +44,8 @@ def main():
     score = model.evaluate(test_data, test_labels, 
         batch_size=BATCH_SIZE
         )
-    print('\nTest score: ', score[0])
-    print('\nTest accuracy: ', score[1])
+    #print('\nTest score: ', score[0]) #test loss - need definition
+    print('\nTest accuracy: ', score[1]) #test accuracy
 
 if __name__ == "__main__":
     main()
